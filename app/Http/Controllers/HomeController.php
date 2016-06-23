@@ -19,8 +19,9 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-    }
 
+    }
+    private static $userD = null;
     /**
      * Show the application dashboard.
      *
@@ -52,7 +53,9 @@ class HomeController extends Controller
         $password = $request->get('passwd');
         if (Auth::attempt(array('username' => $username, 'password' => $password)))
         {
-            $Result = ['accessGranted' => 1, 'username' => $username, 'password', $password];
+            $Result = ['accessGranted' => 1, 'username' => $username];
+            $userD =  User::all()->where('username',$username);
+
         }else
         {
             $Result = ['accessGranted' => 0, 'username' => $username];
@@ -60,9 +63,11 @@ class HomeController extends Controller
         return $Result;
     }
 
-    public function CheckLoginlll()
+    public function admin()
     {
-        $Result = ['accessGranted' => 1, 'username' => 'mma', 'password'=> 'mma'];
-        return $Result;
+        //TODO: Create Session Manager (~_~)
+        $userD =  User::all()->where('username','mma')->first();
+
+        return view('admin/dashboard',compact('userD'));
     }
 }

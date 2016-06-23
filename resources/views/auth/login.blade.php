@@ -8,7 +8,7 @@
     <meta name="description" content="Xenon Boostrap Admin Panel" />
     <meta name="author" content="" />
 
-    <title>Xenon - Login</title>
+    <title>TaxiBan - Login</title>
 
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Arimo:400,700,400italic">
     <link rel="stylesheet" href="{!!url('assets/css')!!}/fonts/linecons/css/linecons.css">
@@ -148,12 +148,12 @@
 
             <div class="form-group">
                 {!! Form::label('username', 'Username',array('class'=>"control-label", 'for'=>"username")) !!}
-                {!! Form::text('username', '',array('class'=>"form-control input-dark", 'id'=>"username", 'autocomplete'=>"off")) !!}
+                {!! Form::text('username', '',array('class'=>"form-control input-dark", 'id'=>"username", 'autocomplete'=>"off", 'maxlength'=>"20")) !!}
             </div>
 
             <div class="form-group">
                 {!! Form::label('passwd', 'Password',array('class'=>"control-label", 'for'=>"passwd")) !!}
-                {!! Form::password('passwd', array('class'=>"form-control input-dark", 'id'=>"passwd", 'autocomplete'=>"off")) !!}
+                {!! Form::password('passwd', array('class'=>"form-control input-dark", 'id'=>"passwd", 'autocomplete'=>"off", 'minlength'=>"6")) !!}
             </div>
 
             <div class="form-group">

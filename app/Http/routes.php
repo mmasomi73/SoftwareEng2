@@ -16,3 +16,4 @@ Route::get('/index', 'HomeController@welcome');
 Route::get('/login', 'HomeController@login'  );
 Route::get('/home', 'HomeController@index'   );
 Route::post('/logincheck','HomeController@CheckLogin');
+Route::get('/admin', 'HomeController@admin');

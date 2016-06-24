@@ -19,6 +19,7 @@ class CreateDriversTable extends Migration
             $table->time      ('endtime')        ;
             $table->decimal   ('hourlywage', 10) ;
             $table->decimal   ('score')          ;
+            $table->text      ('plate')          ;
             $table->decimal   ('servicecounter') ;
             $table->integer('userid')   ->unsigned();
             $table->integer('vehicleid')->unsigned();

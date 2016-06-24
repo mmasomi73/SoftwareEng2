@@ -17,3 +17,8 @@ Route::get('/login', 'HomeController@login'  );
 Route::get('/home', 'HomeController@index'   );
 Route::post('/logincheck','HomeController@CheckLogin');
 Route::get('/admin', 'HomeController@admin');
+Route::get('/admin/addDriver', 'HomeController@addDriver');
+Route::post('/admin/addDriver/add', 'HomeController@addnewDriver');
+Route::get('/admin/Drivers/view', 'HomeController@viewDriver');
+Route::get('/admin/Drivers/view/edit/{id}', 'HomeController@EdidDrivewr');
+Route::post('/admin/Drivers/view/edit/{id}/submit', 'HomeController@EdidDrivewrSub');

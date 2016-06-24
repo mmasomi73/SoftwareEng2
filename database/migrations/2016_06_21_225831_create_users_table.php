@@ -16,7 +16,7 @@ class CreateUsersTable extends Migration
             $table->increments('id')                 ; // PRIMARY KEY  of `users` Table
             $table->string    ('name')               ; // NAME         of  user
             $table->string    ('family')             ; // FAMILY       of  user
-            $table->decimal   ('phonenumber', 10, 3) ; // PHONE NUMBER of  user
+            $table->strin     ('phonenumber')        ; // PHONE NUMBER of  user
             $table->string    ('email')   ->unique() ; // EMAIL        of  user
             $table->string    ('username')->unique() ; // USERNAME     of  user
             $table->string    ('password')           ; // PASSWORD     of  user

@@ -35,7 +35,7 @@
 @endsection
 
 @section('Username')
-    {{ $userD->name + " " +  $userD->family }}
+    {{ $userD->name . " " .  $userD->family }}
 @stop
 
 @section('Email')
@@ -45,4 +45,28 @@
 @section('EventNum')
     <!-- TODO: set Event Number -->
     5
+@stop
+
+@section('BottomScript')
+        <!-- Bottom Scripts -->
+    <script src="{{ url('assets') }}/js/bootstrap.min.js"></script>
+    <script src="{{ url('assets') }}/js/TweenMax.min.js"></script>
+    <script src="{{ url('assets') }}/js/resizeable.js"></script>
+    <script src="{{ url('assets') }}/js/joinable.js"></script>
+    <script src="{{ url('assets') }}/js/xenon-api.js"></script>
+    <script src="{{ url('assets') }}/js/xenon-toggles.js"></script>
+
+
+    <!-- Imported scripts on this page -->
+    <script src="{{ url('assets') }}/js/xenon-widgets.js"></script>
+    <script src="{{ url('assets') }}/js/devexpress-web-14.1/js/globalize.min.js"></script>
+    <script src="{{ url('assets') }}/js/devexpress-web-14.1/js/dx.chartjs.js"></script>
+    <script src="{{ url('assets') }}/js/toastr/toastr.min.js"></script>
+
+
+
+
+
+    <!-- JavaScripts initializations and stuff -->
+    <script src="{{ url('assets') }}/js/xenon-custom.js"></script>
 @stop

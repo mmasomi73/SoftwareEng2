@@ -11,16 +11,16 @@
     <title>Dashboard</title>
 
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Arimo:400,700,400italic">
-    <link rel="stylesheet" href="assets/css/fonts/linecons/css/linecons.css">
-    <link rel="stylesheet" href="assets/css/fonts/fontawesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/bootstrap.css">
-    <link rel="stylesheet" href="assets/css/xenon-core.css">
-    <link rel="stylesheet" href="assets/css/xenon-forms.css">
-    <link rel="stylesheet" href="assets/css/xenon-components.css">
-    <link rel="stylesheet" href="assets/css/xenon-skins.css">
-    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="{{ url('assets') }}/css/fonts/linecons/css/linecons.css">
+    <link rel="stylesheet" href="{{ url('assets') }}/css/fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url('assets') }}/css/bootstrap.css">
+    <link rel="stylesheet" href="{{ url('assets') }}/css/xenon-core.css">
+    <link rel="stylesheet" href="{{ url('assets') }}/css/xenon-forms.css">
+    <link rel="stylesheet" href="{{ url('assets') }}/css/xenon-components.css">
+    <link rel="stylesheet" href="{{ url('assets') }}/css/xenon-skins.css">
+    <link rel="stylesheet" href="{{ url('assets') }}/css/custom.css">
 
-    <script src="assets/js/jquery-1.11.1.min.js"></script>
+    <script src="{{ url('assets') }}/js/jquery-1.11.1.min.js"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -49,7 +49,7 @@
                         <!-- TODO: User Setting Page Link -->
                         <a href="extra-profile.html">
                             <!-- TODO: UserProfile Image -->
-                            <img src="assets/images/user-2.png" class="img-responsive img-circle" />
+                            <img src="{{ url('assets') }}/images/user-2.png" class="img-responsive img-circle" />
                         </a>
                     </div>
 
@@ -95,11 +95,11 @@
                 <!-- logo -->
                 <div class="logo">
                     <a href="#" class="logo-expanded">
-                        <img src="assets/images/icon.png" width="80" alt="" />
+                        <img src="{{ url('assets') }}/images/icon.png" width="80" alt="" />
                     </a>
 
                     <a href="#" class="logo-collapsed">
-                        <img src="assets/images/icon.png" width="40" alt="" />
+                        <img src="{{ url('assets') }}/images/icon.png" width="40" alt="" />
                     </a>
                 </div>
 
@@ -176,8 +176,8 @@
                     </a>
                     <ul>
                         <li>
-                            <!-- TODO: Link Setting -->
-                            <a href="mailbox-main.html">
+                            <!-- TODO: Link Setting [DONE] -->
+                            <a href="{{ url('admin') }}/addDriver">
                                 <span class="title">Add Driver</span>
                             </a>
                         </li>
@@ -225,7 +225,7 @@
         <!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
         <!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
         <!-- Or class "fixed" to  always fix the footer to the end of page -->
-        <footer class="main-footer fixed footer-type-1">
+        <footer class="main-footer sticky footer-type-1">
 
             <div class="footer-inner">
 
@@ -254,31 +254,14 @@
 </div>
 
 
-<div class="page-loading-overlay">
+<!-- class="page-loading-overlay">
     <div class="loader-2"></div>
-</div>
+</div-->
 
 
+@yield('BottomScript')
 
 
-<!-- Bottom Scripts -->
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/TweenMax.min.js"></script>
-<script src="assets/js/resizeable.js"></script>
-<script src="assets/js/joinable.js"></script>
-<script src="assets/js/xenon-api.js"></script>
-<script src="assets/js/xenon-toggles.js"></script>
-
-
-<!-- Imported scripts on this page -->
-<script src="assets/js/xenon-widgets.js"></script>
-<script src="assets/js/devexpress-web-14.1/js/globalize.min.js"></script>
-<script src="assets/js/devexpress-web-14.1/js/dx.chartjs.js"></script>
-<script src="assets/js/toastr/toastr.min.js"></script>
-
-
-<!-- JavaScripts initializations and stuff -->
-<script src="assets/js/xenon-custom.js"></script>
 
 </body>
 </html>

@@ -169,7 +169,7 @@ class HomeController extends Controller
         //---------------------= CHECK ADMIN SESSION
         if(Session::get('_username') == null && Session::get('_usertype') != 1)     //CHECK LOGIN   SESSION
             return redirect('/login');
-        if($request->exists('username'))
+        if(!$request->exists('username'))
             return redirect('/admin/addDriver/view/edit/'.$id->id);                 //CHECK REQUEST EXISTING
 
                                                             //   `USERS` TABLE UPDATE
@@ -193,6 +193,36 @@ class HomeController extends Controller
                                                                         //
         $driversD->save();                                              //   SAVE CHANGES IN `DRIVERS` TABLE
 
+        return back();
+    }
+
+    public function pop()
+    {
+        //---------------------= Check Admin Session
+        if(Session::get('_username') == null && Session::get('_usertype') != 1)
+            return redirect('/login');
+
+
+        $userD =  User::all()->where('username',Session::get('_username'))->first();
+
+        return view('admin/popup',compact('userD'));
+    }
+
+    public function DeleteDrivewrSub(User $user, Request $request)
+    {
+//        return $request;
+        //---------------------= CHECK ADMIN SESSION
+        if(Session::get('_username') == null && Session::get('_usertype') != 1)     //CHECK LOGIN   SESSION
+            return redirect('/login');
+        if(!$request->exists('username'))
+            return redirect('/admin/Drivers/view'.$user->id);                       //CHECK REQUEST EXISTING
+
+        if($request->username != $user->username)
+            return redirect('/admin/Drivers/view');
+        //TODO: DELETE FROM DRIVES TABLES (^_^)
+        $driver = Driver::all()->where('userid',$user->id)->first();
+        $driver->delete();
+        $user->delete();
         return back();
     }
 }

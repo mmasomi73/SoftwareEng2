@@ -168,28 +168,19 @@
                 <!-- end: Reports -->
                 <!-- begin: Driver Management -->
                 <li>
-                    <!-- TODO: Link Setting -->
-                    <a href="mailbox-main.html">
+                    <a href="/admin/Drivers/view">
                         <i class="fa-car"></i>
                         <span class="title">Driver Management</span>
 
                     </a>
                     <ul>
                         <li>
-                            <!-- TODO: Link Setting [DONE] -->
                             <a href="{{ url('admin') }}/addDriver">
                                 <span class="title">Add Driver</span>
                             </a>
                         </li>
                         <li>
-                            <!-- TODO: Link Setting -->
-                            <a href="mailbox-compose.html">
-                                <span class="title">Edit Driver</span>
-                            </a>
-                        </li>
-                        <li>
-                            <!-- TODO: Link Setting -->
-                            <a href="mailbox-message.html">
+                            <a href="/admin/Drivers/view">
                                 <span class="title">View Drivers</span>
                             </a>
                         </li>

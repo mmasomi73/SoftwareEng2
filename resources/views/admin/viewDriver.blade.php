@@ -72,7 +72,8 @@
                                     Edit
                                 </a>
 
-                                <a href="#" class="btn btn-danger btn-sm btn-icon icon-left">
+                                <a class="btn btn-danger btn-sm btn-icon icon-left"
+                                val1="/admin/Drivers/view/del/{{ $driver->id }}" val2="{{ $driver->username }}">
                                     Delete
                                 </a>
 
@@ -112,7 +113,42 @@
 @stop
 
 @section('BottomScript')
+    <!-- POPUP Form to Confirm -->
+    <div class="modal fade" id="popupDlete">
+        <div class="modal-dialog">
+            <div class="modal-content">
 
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title"><strong class="text-danger">Are You Sure to Delete? </strong></h4>
+                </div>
+
+                <div class="modal-body">
+                    if Delete Driver, all detail has been delete, if want to Delete This Driver Click to
+                    <strong class="text-danger">Delete</strong>
+                    else Click <strong class="text-primary">Cancel</strong>
+                </div>
+                <div class="driver-detail">
+                </div>
+
+                <div class="modal-footer">
+                    {!! Form::open(array('url' => '', 'method'
+                                => "post", 'role'=> "form" , 'class'=>"formdeleteaction")) !!}
+
+                        <input type="hidden" value="" id="usernamedeleteform" name="username">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <button type="button" class="btn btn-primary col-xs-12" data-dismiss="modal">Cancel</button>
+                            </div>
+                            <div class="col-xs-6">
+                                <button type="submit"  class="btn btn-danger col-xs-12">Delete</button>
+                            </div>
+                        </div>
+                    {!! Form::close() !!}
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Imported styles on this page -->
     <link rel="stylesheet" href="{{ url('assets') }}/js/datatables/dataTables.bootstrap.css">
 
@@ -134,4 +170,25 @@
 
     <!-- JavaScripts initializations and stuff -->
     <script src="{{ url('assets') }}/js/xenon-custom.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("a.btn-danger").click(function(){
+                var href     = $(this).attr('val1');
+                var username = $(this).attr('val2');
+                $('form.formdeleteaction').attr("action", href);
+                $('#usernamedeleteform').attr("value", username);
+                $('#popupDlete').modal('show', {backdrop: 'fade'});
+
+            });
+            //-----------------------------------------------------
+            $("button.btn-danger").click(function(){
+                var txt = $("input").val();
+                $.post("Drivers/view/del",
+                        {suggest: txt},
+                        function(result){
+                        alert(result);
+                        });
+            });
+        });
+    </script>
 @stop

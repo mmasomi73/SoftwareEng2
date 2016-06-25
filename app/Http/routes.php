@@ -19,8 +19,14 @@ Route::post('/logincheck','HomeController@CheckLogin');
 Route::get('/admin', 'HomeController@admin');
 Route::get('/admin/addDriver', 'HomeController@addDriver');
 Route::post('/admin/addDriver/add', 'HomeController@addnewDriver');
+
+
 Route::get('/admin/Drivers/view', 'HomeController@viewDriver');
 Route::get('/admin/Drivers/view/edit/{id}', 'HomeController@EdidDrivewr');
 Route::post('/admin/Drivers/view/edit/{id}/submit', 'HomeController@EdidDrivewrSub');
 Route::post('/admin/Drivers/view/del/{user}', 'HomeController@DeleteDrivewrSub');
-Route::post('/admin/pop', 'HomeController@pop');
+
+Route::get('/admin/pop', 'HomeController@pop');
+
+Route::get('/admin/report/{user}', 'HomeController@reportbyuser');
+Route::get('/admin/report/{user}/pay/{id}', 'HomeController@paydriver');

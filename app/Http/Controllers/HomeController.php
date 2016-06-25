@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Customer;
+use App\Drive;
 use App\Driver;
 use App\Http\Requests;
 use App\User;
@@ -9,6 +11,7 @@ use App\Vehicle;
 use Illuminate\Http\Request;
 use Auth;
 use App\Http\Controllers\Redirect;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 use Session;
@@ -198,14 +201,33 @@ class HomeController extends Controller
 
     public function pop()
     {
-        //---------------------= Check Admin Session
-        if(Session::get('_username') == null && Session::get('_usertype') != 1)
-            return redirect('/login');
+        $user = new User();
+        $user->username = 'Alasadadas';
+        $user->password = Hash::make('sdfasddfsf');
+        $user->name = 'Alasdasdsasadai';
+        $user->family = 'Madasdsadadi';
+        $user->phonenumber = '0918707asd5470';
+        $user->email = 'mmasadassfdadss73@yahoo.com';
+        $user->type = 3;
+        $user->save();
 
+        $driver = Driver::all()->where('userid',3)->first();
 
-        $userD =  User::all()->where('username',Session::get('_username'))->first();
+        $customer = new Customer();
+        $customer->userid = $user->id;
+        $customer->save();
 
-        return view('admin/popup',compact('userD'));
+        $drive = new Drive();
+        $drive->customerid = $customer->id;
+        $drive->driverid   = $driver->id;
+        $drive->taximeter  = 20;
+        $drive->score      = 5;
+        $drive->payed      = false;
+        $drive->startservice   = Carbon::now();
+        $drive->endservice   =  Carbon::parse('2016-06-25 22:23:00.123456');
+        $drive->save();
+
+        return $user . "<br/>" . $customer . "<br/>" . $drive;
     }
 
     public function DeleteDrivewrSub(User $user, Request $request)
@@ -223,6 +245,68 @@ class HomeController extends Controller
         $driver = Driver::all()->where('userid',$user->id)->first();
         $driver->delete();
         $user->delete();
+        return back();
+    }
+
+    public function reportbyuser(User $user)
+    {
+        //---------------------= Check Admin Session
+        if(Session::get('_username') == null && Session::get('_usertype') != 1)
+            return redirect('/login');
+
+
+        $userD    =  User::all()->where('username',Session::get('_username'))->first();
+
+        $driver   = Driver::all()->where('userid',$user->id)->first();
+
+        $services = Drive::all()->where('driverid',$driver->id);
+        //return $services ."<br/><br/>". $driver ."<br/><br/>".  $userD;
+
+        $customers = DB::table('drives')->where('driverid',$driver->id)
+                        ->join('customers', 'customers.id', '=', 'drives.customerid')
+                        ->join('users', 'users.id', '=', 'customers.userid')
+                        ->select('users.name', 'users.family','users.email'
+                            ,'users.phonenumber', 'drives.score','drives.taximeter'
+                            ,'drives.startservice','drives.endservice', 'drives.payed','drives.id')->get();
+        $Tscore = 0;
+        $Tpayment = 0;
+        $i = 0;
+        foreach($customers as $customer)
+        {
+            $Tscore += $customer->score;
+
+            $st =  Carbon::parse($customer->startservice);
+            $et =  Carbon::parse($customer->endservice);
+             $interval =  $st->diffInHours($et, false);
+            if(!$customer->payed)
+                $Tpayment += $interval * $driver->hourlywage;
+            $i++;
+        }
+
+        $driver->score = $Tscore / $i;
+        $driver->servicecounter = $i;
+        $driver->save();
+        return view('admin/reportinvoice',compact('userD'))
+            ->with('services' ,$services )
+            ->with('driver'   ,$driver   )
+            ->with('user'     ,$user     )
+            ->with('cusotmers',$customers)
+            ->with('Tscore'   ,$Tscore   )
+            ->with('Tcount'   ,$i        )
+            ->with('Tpayment' ,$Tpayment );
+    }
+
+    public function paydriver(User $user, Drive $id)
+    {
+        //---------------------= Check Admin Session
+        if(Session::get('_username') == null && Session::get('_usertype') != 1)
+            return redirect('/login');
+        $driver = Driver::all()->where('userid',$user->id)->first();
+        if($driver->id != $id->driverid)
+            return back();
+        if(!$id->payed)
+            $id->payed = true;
+        $id->save();
         return back();
     }
 }

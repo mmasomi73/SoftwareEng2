@@ -42,6 +42,11 @@ class HomeController extends Controller
 
     public function welcome()
     {
+        if(!Session::has('_username') || !Session::has('_usertype'))
+            return redirect('/login');
+        else if(Session::get('_usertype') == 1)
+            return redirect('/admin');
+
         return view('welcome');
     }
 
@@ -199,35 +204,84 @@ class HomeController extends Controller
         return back();
     }
 
-    public function pop()
+    public function reportbydatesub(Request $request)
     {
-        $user = new User();
-        $user->username = 'Alasadadas';
-        $user->password = Hash::make('sdfasddfsf');
-        $user->name = 'Alasdasdsasadai';
-        $user->family = 'Madasdsadadi';
-        $user->phonenumber = '0918707asd5470';
-        $user->email = 'mmasadassfdadss73@yahoo.com';
-        $user->type = 3;
-        $user->save();
+        //---------------------= CHECK ADMIN SESSION
+        if(Session::get('_username') == null && Session::get('_usertype') != 1)     //CHECK LOGIN   SESSION
+            return redirect('/login');
 
-        $driver = Driver::all()->where('userid',3)->first();
+        $s = Carbon::parse($request->startdate .' '. $request->starttime);
+        $d = Carbon::parse($request->enddate .' '. $request->endtime);
+        $i = $s->diffInHours($d,false);
+        if($i <= 0)
+            return back();
+        Session::put('_SearchStartDate', $s);
+        Session::put('_SearchEndDate', $d);
+        //return Session::get('_SearchStartDate') ."<br/><br/>". Session::get('_SearchEndDate');
+        return back();
+    }
 
-        $customer = new Customer();
-        $customer->userid = $user->id;
-        $customer->save();
+    public function report()
+    {
+//        $user = new User();
+//        $user->username = 'Alasadadas';
+//        $user->password = Hash::make('sdfasddfsf');
+//        $user->name = 'Alasdasdsasadai';
+//        $user->family = 'Madasdsadadi';
+//        $user->phonenumber = '0918707asd5470';
+//        $user->email = 'mmasadassfdadss73@yahoo.com';
+//        $user->type = 3;
+//        $user->save();
+//
+//        $driver = Driver::all()->where('userid',3)->first();
+//
+//        $customer = new Customer();
+//        $customer->userid = $user->id;
+//        $customer->save();
+//
+//        $drive = new Drive();
+//        $drive->customerid = $customer->id;
+//        $drive->driverid   = $driver->id;
+//        $drive->taximeter  = 20;
+//        $drive->score      = 5;
+//        $drive->payed      = false;
+//        $drive->startservice   = Carbon::now();
+//        $drive->endservice   =  Carbon::parse('2016-06-25 22:23:00.123456');
+//        $drive->save();
+//
+//        return $user . "<br/>" . $customer . "<br/>" . $drive;
+        //---------------------= Check Admin Session
+        if(Session::get('_username') == null && Session::get('_usertype') != 1)
+            return redirect('/login');
 
-        $drive = new Drive();
-        $drive->customerid = $customer->id;
-        $drive->driverid   = $driver->id;
-        $drive->taximeter  = 20;
-        $drive->score      = 5;
-        $drive->payed      = false;
-        $drive->startservice   = Carbon::now();
-        $drive->endservice   =  Carbon::parse('2016-06-25 22:23:00.123456');
-        $drive->save();
 
-        return $user . "<br/>" . $customer . "<br/>" . $drive;
+        $userD =  User::all()->where('username',Session::get('_username'))->first();
+//        Session::get('_SearchStartDate');
+//        Session::get('_SearchEndDate');
+//        return Session::get('_SearchStartDate') ."<br/><br/>". Session::get('_SearchEndDate');
+
+        if( Session::has('_SearchStartDate')  && Session::has('_SearchEndDate'))
+            $drivers = DB::table('drives')->where('startservice','>',Session::get('_SearchStartDate'))
+                ->where('endservice','<',Session::get('_SearchEndDate'))
+                ->join('drivers', 'drivers.id', '=', 'drives.driverid')
+                ->join('users', 'users.id', '=', 'drivers.userid')
+                ->select('users.name', 'users.family','users.email','users.username'
+                    ,'users.phonenumber', 'drives.score','drives.taximeter'
+                    ,'drives.startservice','drives.endservice', 'drives.payed','drives.id', 'users.id as uid')
+                ->get();
+        else
+            $drivers = DB::table('drives')
+                ->join('drivers', 'drivers.id', '=', 'drives.driverid')
+                ->join('users', 'users.id', '=', 'drivers.userid')
+                ->select('users.name', 'users.family','users.email','users.username'
+                    ,'users.phonenumber', 'drives.score','drives.taximeter'
+                    ,'drives.startservice','drives.endservice', 'drives.payed','drives.id','users.id as uid')
+                ->get();
+
+        //$drivers  = User::all()->where('type',2);
+        //$driversD = Driver::all();
+        //return  Session::get('_SearchStartDate') ."<br/><br/>". Session::get('_SearchStartDate');
+        return view('admin/report',compact('userD'))->with('drivers',$drivers);
     }
 
     public function DeleteDrivewrSub(User $user, Request $request)
@@ -262,12 +316,23 @@ class HomeController extends Controller
         $services = Drive::all()->where('driverid',$driver->id);
         //return $services ."<br/><br/>". $driver ."<br/><br/>".  $userD;
 
-        $customers = DB::table('drives')->where('driverid',$driver->id)
+        if(Session::has('_SearchStartDate') && Session::has('_SearchEndDate'))
+            $customers = DB::table('drives')->where('driverid',$driver->id)
+                        ->where('startservice','>',Session::get('_SearchStartDate'))
+                        ->where('endservice','<',Session::get('_SearchEndDate'))
                         ->join('customers', 'customers.id', '=', 'drives.customerid')
                         ->join('users', 'users.id', '=', 'customers.userid')
                         ->select('users.name', 'users.family','users.email'
                             ,'users.phonenumber', 'drives.score','drives.taximeter'
                             ,'drives.startservice','drives.endservice', 'drives.payed','drives.id')->get();
+        else
+            $customers = DB::table('drives')->where('driverid',$driver->id)
+                ->join('customers', 'customers.id', '=', 'drives.customerid')
+                ->join('users', 'users.id', '=', 'customers.userid')
+                ->select('users.name', 'users.family','users.email'
+                    ,'users.phonenumber', 'drives.score','drives.taximeter'
+                    ,'drives.startservice','drives.endservice', 'drives.payed','drives.id')->get();
+
         $Tscore = 0;
         $Tpayment = 0;
         $i = 0;
@@ -282,7 +347,7 @@ class HomeController extends Controller
                 $Tpayment += $interval * $driver->hourlywage;
             $i++;
         }
-
+        if($i == 0) $i = 1;
         $driver->score = $Tscore / $i;
         $driver->servicecounter = $i;
         $driver->save();
@@ -309,4 +374,45 @@ class HomeController extends Controller
         $id->save();
         return back();
     }
+
+    public function profile()
+    {
+        if(!Session::has('_username') || !Session::has('_usertype'))
+            return redirect('/login');
+        $userD = User::all()->where('username',Session::get('_username'))->first();
+        return view('admin/profile',compact('userD'));
+    }
+
+    public function profilesub(Request $request)
+    {
+        if(!Session::has('_username') || !Session::has('_usertype'))
+            return redirect('/login');
+
+        $userD = User::all()->where('username',Session::get('_username'))->first();
+//        return $request;
+
+        if($request->oldpassword == "")
+        {
+            $userD->name = $request->name;
+            $userD->family = $request->family;
+            $userD->email = $request->email;
+            $userD->phonenumber = $request->phonenumber;
+        }else
+        {
+            if($request->confnewpassword == $request->newpassword)
+            {
+                $userD->name = $request->name;
+                $userD->family = $request->family;
+                $userD->email = $request->email;
+                $userD->phonenumber = $request->phonenumber;
+                $userD->password = Hash::make($request->newpassword);
+            }
+
+        }
+
+        $userD->save();
+        return back();
+
+    }
+
 }

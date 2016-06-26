@@ -133,34 +133,37 @@
                 <!-- begin: Reports -->
                 <li>
                     <!-- TODO: Link Setting -->
-                    <a href="ui-panels.html">
+                    <a href="/admin/report">
                         <i class="linecons-note"></i>
                         <span class="title">Reports</span>
-                        <span class="label label-success pull-right"> @yield('EventNum') </span>
+                        <!--span class="label label-success pull-right"> yield('EventNum') </span-->
                     </a>
                     <ul>
-                        <li>
+                        <li >
                             <!-- TODO: Link Setting -->
-                            <a href="ui-panels.html">
-                                <span class="title">By Time</span>
+                            <a href="/admin/report">
+                                <span class="title">By Time </span>
                             </a>
                         </li>
-                        <li>
+                        <li disabled="disabled">
                             <!-- TODO: Link Setting -->
-                            <a href="ui-buttons.html">
-                                <span class="title">By Driver</span>
+                            <a href="" disabled="disabled" style="opacity: 0.5;
+                                                        filter: alpha(opacity=50);">
+                                <span class="title" disabled="disabled">By Driver: Coming Soon . . .</span>
                             </a>
                         </li>
-                        <li>
+                        <li disabled="disabled" style="opacity: 0.5;
+                                                        filter: alpha(opacity=50);" >
                             <!-- TODO: Link Setting -->
-                            <a href="ui-tabs-accordions.html">
-                                <span class="title">By Score </span>
+                            <a href="" disabled="disabled">
+                                <span class="title"  disabled="disabled">By Score: Coming Soon . . .</span>
                             </a>
                         </li>
-                        <li>
+                        <li disabled="disabled" style="opacity: 0.5;
+                                                        filter: alpha(opacity=50);">
                             <!-- TODO: Link Setting -->
-                            <a href="ui-modals.html">
-                                <span class="title">Advance</span>
+                            <a href="">
+                                <span class="title">Advance: Coming Soon . . .</span>
                             </a>
                         </li>
                     </ul>

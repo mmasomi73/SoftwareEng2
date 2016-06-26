@@ -6,7 +6,7 @@
 
         <div class="title-env">
             <h1 class="title">You Are in Here </h1>
-            <p class="description">show drivers Details, Update  or Delete</p>
+            <p class="description">Report Page</p>
         </div>
 
         <div class="breadcrumb-env">
@@ -16,7 +16,7 @@
                     <a href="/admin"><i class="fa-home"></i>Dashboard</a>
                 </li>
                 <li>
-                    <a href="#"><strong>View Divers</strong></a>
+                    <a href="#"><strong>Report</strong></a>
                 </li>
             </ol>
 
@@ -39,8 +39,33 @@
             </div>
         </div>
         <div class="panel-body">
+            <!--            begin:Search            -->
+            <div class="row">
+                {!! Form::open(array('url' => 'admin/report/date/sub', 'method' => "post",
+                 'role'=> "form", 'id' =>"addDriver" , 'class'=>"form-horizontal")) !!}
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" for="field-2">Selected Date Range To Search</label>
 
-
+                        <div class="col-sm-4">
+                            <div class="date-and-time">
+                                <input type="text" name="startdate" class="form-control datepicker" data-format="yyyy-mm-dd">
+                                <input type="text" name="starttime" class="form-control timepicker" data-template="dropdown" data-show-seconds="true" data-default-time="08:00 AM" data-show-meridian="true" data-minute-step="1" data-second-step="5">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="date-and-time">
+                                <input type="text" name="enddate" class="form-control datepicker" data-format="yyyy-mm-dd">
+                                <input type="text" name="endtime" class="form-control timepicker" data-template="dropdown" data-show-seconds="true" data-default-time="20:00 AM" data-show-meridian="true" data-minute-step="1" data-second-step="5">
+                            </div>
+                        </div>
+                        <div class="col-xs-1">
+                            <button type="submit" class="btn btn-blue right"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                {!! Form::close() !!}
+            </div>
+            <!--            end:Search              -->
+            <hr>
             <div id="example-2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
                 <table class="table table-bordered table-striped dataTable no-footer" id="example-2" role="grid"
                        aria-describedby="example-2_info">
@@ -66,7 +91,7 @@
                             style="width: 130px;">Email
                         </th>
                         <th class="sorting" tabindex="0" aria-controls="example-2" rowspan="1" colspan="1"
-                            aria-label="Actions: activate to sort column ascending" style="width: 161px;">Actions
+                            aria-label="Actions: activate to sort column ascending" style="width: 90px;">Actions
                         </th>
                     </tr>
                     </thead>
@@ -79,31 +104,26 @@
                             <tr role="row" class="odd">
                         @else
                             <tr role="row" class="even">
-                        @endif
-                            <td class="">
-                                {{ $i++ }}
-                            </td>
-                            <td>{{ $driver->name . " " . $driver->family }}</td>
-                            <td class="sorting_1">{{ $driver->username }}</td>
-                            <td>{{ $driver->phonenumber }}</td>
-                            <td>{{ $driver->email }}</td>
+                                @endif
+                                <td class="">
+                                    {{ $i++ }}
+                                </td>
+                                <td>{{ $driver->name . " " . $driver->family }}</td>
+                                <td class="sorting_1">{{ $driver->username }}</td>
+                                <td>{{ $driver->phonenumber }}</td>
+                                <td>{{ $driver->email }}</td>
                                 <!-- TODO: Create Button Links -->
-                            <td>
-                                <a href="/admin/Drivers/view/edit/{{ $driver->id }}" class="btn btn-secondary btn-sm btn-icon icon-left">
-                                    Edit
-                                </a>
+                                <td>
+                                    <a href="/admin/Drivers/view/edit/{{ $driver->id }}" class="btn btn-secondary btn-sm btn-icon icon-left">
+                                        Edit
+                                    </a>
 
-                                <a class="btn btn-danger btn-sm btn-icon icon-left"
-                                val1="/admin/Drivers/view/del/{{ $driver->id }}" val2="{{ $driver->username }}">
-                                    Delete
-                                </a>
-
-                                <a href="/admin/report/{{ $driver->id }}" class="btn btn-info btn-sm btn-icon icon-left">
-                                    Profile
-                                </a>
-                            </td>
-                        </tr>
-                    @endforeach
+                                    <a href="/admin/report/{{ $driver->uid }}" class="btn btn-info btn-sm btn-icon icon-left">
+                                        Profile
+                                    </a>
+                                </td>
+                            </tr>
+                            @endforeach
                     </tbody>
                 </table>
                 <div class="row">
@@ -121,20 +141,20 @@
 @stop
 
 @section('Username')
-{{ $userD->name . " " .  $userD->family }}
-@stop
+    {{ $userD->name . " " .  $userD->family }}
+    @stop
 
 @section('Email')
-{{ $userD->email }}
-@stop
+    {{ $userD->email }}
+    @stop
 
 @section('EventNum')
-        <!-- TODO: set Event Number -->
-5
+    <!-- TODO: set Event Number -->
+    5
 @stop
 
 @section('BottomScript')
-    <!-- POPUP Form to Confirm -->
+            <!-- POPUP Form to Confirm -->
     <div class="modal fade" id="popupDlete">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -156,15 +176,15 @@
                     {!! Form::open(array('url' => '', 'method'
                                 => "post", 'role'=> "form" , 'class'=>"formdeleteaction")) !!}
 
-                        <input type="hidden" value="" id="usernamedeleteform" name="username">
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <button type="button" class="btn btn-primary col-xs-12" data-dismiss="modal">Cancel</button>
-                            </div>
-                            <div class="col-xs-6">
-                                <button type="submit"  class="btn btn-danger col-xs-12">Delete</button>
-                            </div>
+                    <input type="hidden" value="" id="usernamedeleteform" name="username">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <button type="button" class="btn btn-primary col-xs-12" data-dismiss="modal">Cancel</button>
                         </div>
+                        <div class="col-xs-6">
+                            <button type="submit"  class="btn btn-danger col-xs-12">Delete</button>
+                        </div>
+                    </div>
                     {!! Form::close() !!}
                 </div>
             </div>
@@ -172,6 +192,11 @@
     </div>
     <!-- Imported styles on this page -->
     <link rel="stylesheet" href="{{ url('assets') }}/js/datatables/dataTables.bootstrap.css">
+    <!-- Imported styles on this page -->
+    <link rel="stylesheet" href="{{ url('assets') }}/js/daterangepicker/daterangepicker-bs3.css">
+    <link rel="stylesheet" href="{{ url('assets') }}/js/select2/select2.css">
+    <link rel="stylesheet" href="{{ url('assets') }}/js/select2/select2-bootstrap.css">
+    <link rel="stylesheet" href="{{ url('assets') }}/js/multiselect/css/multi-select.css">
 
     <!-- Bottom Scripts -->
     <script src="{{ url('assets') }}/js/bootstrap.min.js"></script>
@@ -187,6 +212,19 @@
     <script src="{{ url('assets') }}/js/datatables/dataTables.bootstrap.js"></script>
     <script src="{{ url('assets') }}/js/datatables/yadcf/jquery.dataTables.yadcf.js"></script>
     <script src="{{ url('assets') }}/js/datatables/tabletools/dataTables.tableTools.min.js"></script>
+
+    <!-- Imported scripts on this page -->
+    <script src="{{ url('assets') }}/js/daterangepicker/daterangepicker.js"></script>
+    <script src="{{ url('assets') }}/js/datepicker/bootstrap-datepicker.js"></script>
+    <script src="{{ url('assets') }}/js/timepicker/bootstrap-timepicker.min.js"></script>
+    <script src="{{ url('assets') }}/js/colorpicker/bootstrap-colorpicker.min.js"></script>
+    <script src="{{ url('assets') }}/js/select2/select2.min.js"></script>
+    <script src="{{ url('assets') }}/js/jquery-ui/jquery-ui.min.js"></script>
+    <script src="{{ url('assets') }}/js/selectboxit/jquery.selectBoxIt.min.js"></script>
+    <script src="{{ url('assets') }}/js/tagsinput/bootstrap-tagsinput.min.js"></script>
+    <script src="{{ url('assets') }}/js/typeahead.bundle.js"></script>
+    <script src="{{ url('assets') }}/js/handlebars.min.js"></script>
+    <script src="{{ url('assets') }}/js/multiselect/js/jquery.multi-select.js"></script>
 
 
     <!-- JavaScripts initializations and stuff -->
@@ -207,7 +245,7 @@
                 $.post("Drivers/view/del",
                         {suggest: txt},
                         function(result){
-                        alert(result);
+                            alert(result);
                         });
             });
         });

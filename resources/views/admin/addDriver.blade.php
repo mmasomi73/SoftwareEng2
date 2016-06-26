@@ -1,6 +1,28 @@
 @extends('admin.layouts.adminlayout')
 
 @section('Content')
+    <div class="page-title">
+
+        <div class="title-env">
+            <h1 class="title">You Are Here </h1>
+            <p class="description">in This page you can Add new Driver</p>
+        </div>
+
+        <div class="breadcrumb-env">
+
+            <ol class="breadcrumb bc-1">
+                <li>
+                    <a href="/admin"><i class="fa-home"></i>Dashboard</a>
+                </li>
+                <li>
+
+                    <a href="#"><strong>Add New Driver</strong></a>
+                </li>
+            </ol>
+
+        </div>
+
+    </div>
     <div class="col-sm-12">
         <div class="panel panel-default">
             <div class="panel-heading">

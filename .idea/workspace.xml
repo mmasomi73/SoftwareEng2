@@ -25,8 +25,8 @@
       <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.153847">
-              <caret line="31" column="69" selection-start-line="31" selection-start-column="60" selection-end-line="31" selection-end-column="69" />
+            <state vertical-scroll-proportion="-19.807692">
+              <caret line="36" column="59" selection-start-line="36" selection-start-column="49" selection-end-line="36" selection-end-column="59" />
               <folding>
                 <element signature="e#7#392#0#PHP" expanded="true" />
               </folding>
@@ -37,67 +37,38 @@
       <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.846153">
-              <caret line="308" column="20" selection-start-line="308" selection-start-column="20" selection-end-line="308" selection-end-column="20" />
+            <state vertical-scroll-proportion="-8.923077">
+              <caret line="149" column="16" selection-start-line="149" selection-start-column="8" selection-end-line="149" selection-end-column="16" />
               <folding>
-                <element signature="e#40#57#0#PHP" expanded="true" />
                 <element signature="e#602#838#0#PHP" expanded="false" />
-                <element signature="e#844#913#0#PHP" expanded="false" />
-                <element signature="e#919#992#0#PHP" expanded="false" />
-                <element signature="e#998#1068#0#PHP" expanded="false" />
-                <element signature="e#1078#1748#0#PHP" expanded="false" />
-                <element signature="e#1754#2106#0#PHP" expanded="false" />
-                <element signature="e#2112#2527#0#PHP" expanded="false" />
-                <element signature="e#3914#4412#0#PHP" expanded="false" />
-                <element signature="e#4418#5207#0#PHP" expanded="false" />
-                <element signature="e#5213#7043#0#PHP" expanded="false" />
+                <element signature="e#1115#1188#0#PHP" expanded="false" />
+                <element signature="e#1194#1264#0#PHP" expanded="false" />
+                <element signature="e#1274#1944#0#PHP" expanded="false" />
+                <element signature="e#1950#2302#0#PHP" expanded="false" />
+                <element signature="e#2308#2723#0#PHP" expanded="false" />
+                <element signature="e#2729#4104#0#PHP" expanded="false" />
+                <element signature="e#4614#5403#0#PHP" expanded="false" />
+                <element signature="e#5409#7239#0#PHP" expanded="false" />
+                <element signature="e#7245#7950#0#PHP" expanded="false" />
+                <element signature="e#7956#10889#0#PHP" expanded="false" />
+                <element signature="e#10895#11642#0#PHP" expanded="false" />
+                <element signature="e#11648#14349#0#PHP" expanded="false" />
+                <element signature="e#14355#14823#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="2016_06_21_233118_create_drives_table.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2016_06_21_233118_create_drives_table.php">
+      <file leaf-file-name="viewDriver.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin/viewDriver.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.884615">
-              <caret line="31" column="37" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="reportinvoice.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin/reportinvoice.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="4.608618">
-              <caret line="151" column="52" selection-start-line="151" selection-start-column="52" selection-end-line="151" selection-end-column="52" />
+            <state vertical-scroll-proportion="0.6714542">
+              <caret line="100" column="67" selection-start-line="100" selection-start-column="67" selection-end-line="100" selection-end-column="67" />
               <folding>
-                <element signature="e#1096#1120#0#HTML" expanded="true" />
-                <element signature="e#1172#1196#0#HTML" expanded="true" />
-                <element signature="e#1243#1267#0#HTML" expanded="true" />
-                <element signature="e#1316#1340#0#HTML" expanded="true" />
-                <element signature="e#3508#3600#0#HTML" expanded="true" />
+                <marker date="1466901416130" expanded="true" signature="6332:6463" placeholder="..." />
+                <marker date="1466901416130" expanded="true" signature="6344:6461" placeholder="..." />
+                <marker date="1466901416130" expanded="true" signature="6350:6460" placeholder="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2016_06_21_232903_create_drivers_table.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2016_06_21_232903_create_drivers_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.1923075">
-              <caret line="22" column="46" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="popup.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin/popup.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.230769">
-              <caret line="32" column="50" selection-start-line="32" selection-start-column="50" selection-end-line="32" selection-end-column="50" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -140,17 +111,19 @@
         <option value="$PROJECT_DIR$/app/Vehicle.php" />
         <option value="$PROJECT_DIR$/resources/views/firstpage.blade.php" />
         <option value="$PROJECT_DIR$/app/User.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/addDriver.blade.php" />
         <option value="$PROJECT_DIR$/public/assets/js/datatables/dataTables.bootstrap.css" />
         <option value="$PROJECT_DIR$/database/migrations/2016_06_21_225831_create_users_table.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/editDriver.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/layouts/adminlayout.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/viewDriver.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/popup.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/layouts/adminlayout.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/addDriver.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/editDriver.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/reportinvoice.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/profile.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/reportinvoice.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/report.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/viewDriver.blade.php" />
       </list>
     </option>
   </component>
@@ -459,26 +432,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="58" column="9" selection-start-line="58" selection-start-column="9" selection-end-line="58" selection-end-column="9" />
-          <folding>
-            <element signature="e#40#57#0#PHP" expanded="true" />
-            <element signature="e#602#838#0#PHP" expanded="false" />
-            <element signature="e#844#913#0#PHP" expanded="false" />
-            <element signature="e#919#992#0#PHP" expanded="false" />
-            <element signature="e#998#1068#0#PHP" expanded="false" />
-            <element signature="e#1078#1748#0#PHP" expanded="false" />
-            <element signature="e#1754#2106#0#PHP" expanded="false" />
-            <element signature="e#2112#2527#0#PHP" expanded="false" />
-            <element signature="e#3914#4412#0#PHP" expanded="false" />
-            <element signature="e#4418#5207#0#PHP" expanded="false" />
-            <element signature="e#5213#7043#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -728,13 +681,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/dashboard.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17741935">
-          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="71" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/css/bootstrap.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.44802868">
@@ -747,55 +693,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.51792115">
           <caret line="107" column="21" selection-start-line="107" selection-start-column="21" selection-end-line="107" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/addDriver.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.4615383">
-          <caret line="175" column="4" selection-start-line="0" selection-start-column="0" selection-end-line="195" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/layouts/adminlayout.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.153846">
-          <caret line="191" column="14" selection-start-line="191" selection-start-column="14" selection-end-line="191" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/editDriver.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.153846">
-          <caret line="20" column="180" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="180" />
-          <folding>
-            <marker date="1466760048040" expanded="true" signature="1269:1466" placeholder="..." />
-            <marker date="1466760048040" expanded="true" signature="1281:1464" placeholder="..." />
-            <marker date="1466760048040" expanded="true" signature="1313:1463" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/viewDriver.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.5">
-          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="98" selection-end-column="10" />
-          <folding>
-            <element signature="e#112#4634#0#HTML" expanded="false" />
-            <element signature="e#7660#8475#0#HTML" expanded="false" />
-            <marker date="1466816872248" expanded="true" signature="5743:5874" placeholder="..." />
-            <marker date="1466816872248" expanded="true" signature="5755:5872" placeholder="..." />
-            <marker date="1466816872248" expanded="true" signature="5761:5871" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/popup.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.230769">
-          <caret line="32" column="50" selection-start-line="32" selection-start-column="50" selection-end-line="32" selection-end-column="50" />
           <folding />
         </state>
       </provider>
@@ -824,54 +721,130 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.153847">
-          <caret line="31" column="69" selection-start-line="31" selection-start-column="60" selection-end-line="31" selection-end-column="69" />
-          <folding>
-            <element signature="e#7#392#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2016_06_21_233118_create_drives_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.884615">
+        <state vertical-scroll-proportion="-19.615385">
           <caret line="31" column="37" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/layouts/adminlayout.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.846153">
-          <caret line="308" column="20" selection-start-line="308" selection-start-column="20" selection-end-line="308" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.34470376">
+          <caret line="138" column="73" selection-start-line="138" selection-start-column="73" selection-end-line="138" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/dashboard.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.8846154">
+          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="20" selection-end-column="10" />
           <folding>
-            <element signature="e#40#57#0#PHP" expanded="true" />
-            <element signature="e#602#838#0#PHP" expanded="false" />
-            <element signature="e#844#913#0#PHP" expanded="false" />
-            <element signature="e#919#992#0#PHP" expanded="false" />
-            <element signature="e#998#1068#0#PHP" expanded="false" />
-            <element signature="e#1078#1748#0#PHP" expanded="false" />
-            <element signature="e#1754#2106#0#PHP" expanded="false" />
-            <element signature="e#2112#2527#0#PHP" expanded="false" />
-            <element signature="e#3914#4412#0#PHP" expanded="false" />
-            <element signature="e#4418#5207#0#PHP" expanded="false" />
-            <element signature="e#5213#7043#0#PHP" expanded="false" />
+            <element signature="e#63#520#0#HTML" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/editDriver.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.9615384">
+          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="26" selection-end-column="10" />
+          <folding>
+            <element signature="e#63#704#0#HTML" expanded="false" />
+            <marker date="1466895477205" expanded="true" signature="1915:2112" placeholder="..." />
+            <marker date="1466895477205" expanded="true" signature="1927:2110" placeholder="..." />
+            <marker date="1466895477205" expanded="true" signature="1959:2109" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/reportinvoice.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.608618">
-          <caret line="151" column="52" selection-start-line="151" selection-start-column="52" selection-end-line="151" selection-end-column="52" />
+        <state vertical-scroll-proportion="0.03846154">
+          <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
           <folding>
-            <element signature="e#1096#1120#0#HTML" expanded="true" />
-            <element signature="e#1172#1196#0#HTML" expanded="true" />
-            <element signature="e#1243#1267#0#HTML" expanded="true" />
-            <element signature="e#1316#1340#0#HTML" expanded="true" />
-            <element signature="e#3508#3600#0#HTML" expanded="true" />
+            <element signature="e#97#238#0#HTML" expanded="false" />
+            <marker date="1466895756140" expanded="true" signature="924:1080" placeholder="..." />
+            <marker date="1466895756140" expanded="true" signature="936:1078" placeholder="..." />
+            <marker date="1466895756140" expanded="true" signature="942:1077" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/addDriver.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.091561936">
+          <caret line="3" column="4" selection-start-line="0" selection-start-column="0" selection-end-line="217" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/profile.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="47.076923">
+          <caret line="42" column="47" selection-start-line="42" selection-start-column="47" selection-end-line="42" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/report.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6409336">
+          <caret line="120" column="45" selection-start-line="120" selection-start-column="45" selection-end-line="120" selection-end-column="78" />
+          <folding>
+            <marker date="1466901275541" expanded="true" signature="1278:1434" placeholder="..." />
+            <marker date="1466901275541" expanded="true" signature="1290:1432" placeholder="..." />
+            <marker date="1466901275541" expanded="true" signature="1296:1431" placeholder="..." />
+            <marker date="1466901275541" expanded="true" signature="7999:8130" placeholder="..." />
+            <marker date="1466901275541" expanded="true" signature="8011:8128" placeholder="..." />
+            <marker date="1466901275541" expanded="true" signature="8017:8127" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-19.807692">
+          <caret line="36" column="59" selection-start-line="36" selection-start-column="49" selection-end-line="36" selection-end-column="59" />
+          <folding>
+            <element signature="e#7#392#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.923077">
+          <caret line="149" column="16" selection-start-line="149" selection-start-column="8" selection-end-line="149" selection-end-column="16" />
+          <folding>
+            <element signature="e#602#838#0#PHP" expanded="false" />
+            <element signature="e#1115#1188#0#PHP" expanded="false" />
+            <element signature="e#1194#1264#0#PHP" expanded="false" />
+            <element signature="e#1274#1944#0#PHP" expanded="false" />
+            <element signature="e#1950#2302#0#PHP" expanded="false" />
+            <element signature="e#2308#2723#0#PHP" expanded="false" />
+            <element signature="e#2729#4104#0#PHP" expanded="false" />
+            <element signature="e#4614#5403#0#PHP" expanded="false" />
+            <element signature="e#5409#7239#0#PHP" expanded="false" />
+            <element signature="e#7245#7950#0#PHP" expanded="false" />
+            <element signature="e#7956#10889#0#PHP" expanded="false" />
+            <element signature="e#10895#11642#0#PHP" expanded="false" />
+            <element signature="e#11648#14349#0#PHP" expanded="false" />
+            <element signature="e#14355#14823#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/viewDriver.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6714542">
+          <caret line="100" column="67" selection-start-line="100" selection-start-column="67" selection-end-line="100" selection-end-column="67" />
+          <folding>
+            <marker date="1466901416130" expanded="true" signature="6332:6463" placeholder="..." />
+            <marker date="1466901416130" expanded="true" signature="6344:6461" placeholder="..." />
+            <marker date="1466901416130" expanded="true" signature="6350:6460" placeholder="..." />
           </folding>
         </state>
       </provider>

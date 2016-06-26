@@ -1,9 +1,62 @@
 @extends('admin.layouts.adminlayout')
 
 @section('Content')
+    <div class="page-title">
+
+        <div class="title-env">
+            <h1 class="title">You Are in Here </h1>
+            <p class="description">Report Page</p>
+        </div>
+
+        <div class="breadcrumb-env">
+
+            <ol class="breadcrumb bc-1">
+                <li>
+                    <a href="/admin"><i class="fa-home"></i>Dashboard</a>
+                </li>
+                <li>
+                    <a href="/admin/report">Report</a>
+                </li>
+                <li>
+                    <a href="#"><strong>Invoice</strong></a>
+                </li>
+            </ol>
+
+        </div>
+
+    </div>
     <div class="panel panel-default">
         <div class="panel-heading hidden-print">Invoice</div>
         <div class="panel-body">
+
+
+            <!--            begin:Search            -->
+            <div class="row">
+                {!! Form::open(array('url' => 'admin/report/date/sub', 'method' => "post",
+                 'role'=> "form", 'id' =>"addDriver" , 'class'=>"form-horizontal")) !!}
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" for="field-2">Selected Date Range To Search</label>
+
+                    <div class="col-sm-4">
+                        <div class="date-and-time">
+                            <input type="text" name="startdate" class="form-control datepicker" data-format="yyyy-mm-dd">
+                            <input type="text" name="starttime" class="form-control timepicker" data-template="dropdown" data-show-seconds="true" data-default-time="08:00 AM" data-show-meridian="true" data-minute-step="1" data-second-step="5">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="date-and-time">
+                            <input type="text" name="enddate" class="form-control datepicker" data-format="yyyy-mm-dd">
+                            <input type="text" name="endtime" class="form-control timepicker" data-template="dropdown" data-show-seconds="true" data-default-time="20:00 AM" data-show-meridian="true" data-minute-step="1" data-second-step="5">
+                        </div>
+                    </div>
+                    <div class="col-xs-1">
+                        <button type="submit" class="btn btn-blue right"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+                {!! Form::close() !!}
+            </div>
+            <!--            end:Search              -->
+            <hr>
 
             <section class="invoice-env">
 
@@ -176,6 +229,11 @@
     @stop
 
     @section('BottomScript')
+            <!-- Imported styles on this page -->
+    <link rel="stylesheet" href="{{ url('assets') }}/js/daterangepicker/daterangepicker-bs3.css">
+    <link rel="stylesheet" href="{{ url('assets') }}/js/select2/select2.css">
+    <link rel="stylesheet" href="{{ url('assets') }}/js/select2/select2-bootstrap.css">
+    <link rel="stylesheet" href="{{ url('assets') }}/js/multiselect/css/multi-select.css">
 
             <!-- Bottom Scripts -->
     <script src="{{ url('assets') }}/js/bootstrap.min.js"></script>
@@ -184,6 +242,19 @@
     <script src="{{ url('assets') }}/js/joinable.js"></script>
     <script src="{{ url('assets') }}/js/xenon-api.js"></script>
     <script src="{{ url('assets') }}/js/xenon-toggles.js"></script>
+
+    <!-- Imported scripts on this page -->
+    <script src="{{ url('assets') }}/js/daterangepicker/daterangepicker.js"></script>
+    <script src="{{ url('assets') }}/js/datepicker/bootstrap-datepicker.js"></script>
+    <script src="{{ url('assets') }}/js/timepicker/bootstrap-timepicker.min.js"></script>
+    <script src="{{ url('assets') }}/js/colorpicker/bootstrap-colorpicker.min.js"></script>
+    <script src="{{ url('assets') }}/js/select2/select2.min.js"></script>
+    <script src="{{ url('assets') }}/js/jquery-ui/jquery-ui.min.js"></script>
+    <script src="{{ url('assets') }}/js/selectboxit/jquery.selectBoxIt.min.js"></script>
+    <script src="{{ url('assets') }}/js/tagsinput/bootstrap-tagsinput.min.js"></script>
+    <script src="{{ url('assets') }}/js/typeahead.bundle.js"></script>
+    <script src="{{ url('assets') }}/js/handlebars.min.js"></script>
+    <script src="{{ url('assets') }}/js/multiselect/js/jquery.multi-select.js"></script>
 
 
     <!-- JavaScripts initializations and stuff -->

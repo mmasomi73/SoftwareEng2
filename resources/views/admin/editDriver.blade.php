@@ -1,6 +1,30 @@
 @extends('admin.layouts.adminlayout')
 
 @section('Content')
+    <div class="page-title">
+
+        <div class="title-env">
+            <h1 class="title">You Are in Here </h1>
+            <p class="description">show Update Driver Details</p>
+        </div>
+
+        <div class="breadcrumb-env">
+
+            <ol class="breadcrumb bc-1">
+                <li>
+                    <a href="/admin"><i class="fa-home"></i>Dashboard</a>
+                </li>
+                <li>
+                    <a href="/admin/view">View Divers</a>
+                </li>
+                <li>
+                    <a href="#"><strong>Edit Diver</strong></a>
+                </li>
+            </ol>
+
+        </div>
+
+    </div>
     <div class="col-sm-12">
         <div class="panel panel-default">
             <div class="panel-heading">

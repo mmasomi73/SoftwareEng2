@@ -26,7 +26,12 @@ Route::get('/admin/Drivers/view/edit/{id}', 'HomeController@EdidDrivewr');
 Route::post('/admin/Drivers/view/edit/{id}/submit', 'HomeController@EdidDrivewrSub');
 Route::post('/admin/Drivers/view/del/{user}', 'HomeController@DeleteDrivewrSub');
 
-Route::get('/admin/pop', 'HomeController@pop');
+Route::get('/admin/report', 'HomeController@report');
+Route::get('/admin/report/date', 'HomeController@report');
+Route::post('/admin/report/date/sub', 'HomeController@reportbydatesub');
 
 Route::get('/admin/report/{user}', 'HomeController@reportbyuser');
 Route::get('/admin/report/{user}/pay/{id}', 'HomeController@paydriver');
+
+Route::get('/admin/profile', 'HomeController@profile');
+Route::post('/admin/profile/up', 'HomeController@profilesub');

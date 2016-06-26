@@ -1,6 +1,24 @@
 @extends('admin.layouts.adminlayout')
 
 @section('Content')
+    <div class="page-title">
+
+        <div class="title-env">
+            <h1 class="title">You Are in Dashboard </h1>
+            <p class="description">Welcome to your admin panel</p>
+        </div>
+
+        <div class="breadcrumb-env">
+
+            <ol class="breadcrumb bc-1">
+                <li>
+                    <a href="/admin"><i class="fa-home"></i> <strong>Dashboard</strong></a>
+                </li>
+            </ol>
+
+        </div>
+
+    </div>
     <div class="row">
         <div class="col-md-12">
 

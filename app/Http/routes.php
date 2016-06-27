@@ -35,3 +35,5 @@ Route::get('/admin/report/{user}/pay/{id}', 'HomeController@paydriver');
 
 Route::get('/admin/profile', 'HomeController@profile');
 Route::post('/admin/profile/up', 'HomeController@profilesub');
+
+Route::get('/logout', 'HomeController@logout');

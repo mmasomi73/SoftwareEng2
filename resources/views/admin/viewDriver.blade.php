@@ -26,7 +26,7 @@
     <input type="hidden" value="{{  $i = 0 }}">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">Removing search and results count filter</h3>
+            <h3 class="panel-title">Drivers</h3>
 
             <div class="panel-options">
                 <a href="#" data-toggle="panel">
@@ -51,7 +51,7 @@
                             No
                         </th>
                         <th class="sorting" tabindex="0" aria-controls="example-2" rowspan="1" colspan="1"
-                            aria-label="Name: activate to sort column ascending" style="width: 140px;">Name
+                            aria-label="Name: activate to sort column ascending" style="width: 130px;">Name
                         </th>
                         <th class="sorting_asc" tabindex="0" aria-controls="example-2" rowspan="1" colspan="1"
                             aria-label="username: activate to sort column ascending" aria-sort="ascending"
@@ -66,7 +66,7 @@
                             style="width: 130px;">Email
                         </th>
                         <th class="sorting" tabindex="0" aria-controls="example-2" rowspan="1" colspan="1"
-                            aria-label="Actions: activate to sort column ascending" style="width: 161px;">Actions
+                            aria-label="Actions: activate to sort column ascending" style="width: 171px;">Actions
                         </th>
                     </tr>
                     </thead>
@@ -188,11 +188,61 @@
     <script src="{{ url('assets') }}/js/datatables/yadcf/jquery.dataTables.yadcf.js"></script>
     <script src="{{ url('assets') }}/js/datatables/tabletools/dataTables.tableTools.min.js"></script>
 
+    <script src="{{ url('assets') }}/js/xenon-widgets.js"></script>
+    <script src="{{ url('assets') }}/js/devexpress-web-14.1/js/globalize.min.js"></script>
+    <script src="{{ url('assets') }}/js/devexpress-web-14.1/js/dx.chartjs.js"></script>
+    <script src="{{ url('assets') }}/js/toastr/toastr.min.js"></script>
+
+
 
     <!-- JavaScripts initializations and stuff -->
     <script src="{{ url('assets') }}/js/xenon-custom.js"></script>
     <script>
         $(document).ready(function(){
+
+            var msgT =  '{{ \Session::get('_msgT') }}';
+            var msg =  '{{ \Session::get('_msg') }}';
+            var title = '';
+            @if(\Session::get('_msgT') == 1)
+                    title = 'Successfully';
+            var opts = {
+                "closeButton": true,
+                "debug": false,
+                "positionClass": "toast-bottom-right",
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+            toastr.success("{{ \Session::get('_msg') }}.", title, opts);
+            @elseif(\Session::get('_msgT') == 2)
+                    title = 'Error';
+            var opts = {
+                "closeButton": true,
+                "debug": false,
+                "positionClass": "toast-top-full-width",
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+            toastr.error("{{ \Session::get('_msg') }}.", title, opts);
+            @endif
+
+            {{ \Session::put('_msg','') }}
+            {{ \Session::put('_msgT',0) }}
+
+
             $("a.btn-danger").click(function(){
                 var href     = $(this).attr('val1');
                 var username = $(this).attr('val2');
@@ -211,5 +261,6 @@
                         });
             });
         });
+
     </script>
 @stop

@@ -46,8 +46,9 @@ class HomeController extends Controller
             return redirect('/login');
         else if(Session::get('_usertype') == 1)
             return redirect('/admin');
+        Session::put('_msg','');
 
-        return view('welcome');
+        return view('login');
     }
 
     public function firstpage()
@@ -111,9 +112,18 @@ class HomeController extends Controller
         $user   = new User();
         $driver = new Driver();
         if(User::all()->where('username',$request->username)->count() > 0)
-           return redirect('/admin/addDriver');
-        else if(User::all()->where('email',$request->email)->count() > 0)
+        {
+            Session::put('_msg','Username Duplicated');
+            Session::put('_msgT',2);
             return redirect('/admin/addDriver');
+        }
+        else if(User::all()->where('email',$request->email)->count() > 0)
+        {
+            Session::put('_msg','Email Duplicated');
+            Session::put('_msgT',2);
+            return redirect('/admin/addDriver');
+        }
+
         //TODO: implement This Section with AJAX
 
         $user->username = $request->username;
@@ -134,7 +144,8 @@ class HomeController extends Controller
         $driver->userid = $user->id;
         $driver->vehicleid = $vehicle->id;
         $driver->save();
-
+        Session::put('_msg','Driver Added Successfully');
+        Session::put('_msgT',1);
         return back();
     }
 
@@ -148,6 +159,7 @@ class HomeController extends Controller
         $userD =  User::all()->where('username',Session::get('_username'))->first();
 
         $drivers  = User::all()->where('type',2);
+
         $driversD = Driver::all();
 
         return view('admin/viewDriver',compact('userD'))->with('drivers',$drivers)->with('driversD',$driversD);
@@ -156,7 +168,7 @@ class HomeController extends Controller
     public function EdidDrivewr(User $id)
     {
         //---------------------= Check Admin Session
-        if(Session::get('_username') == null && Session::get('_usertype') != 1)
+        if(!Session::has('_username')  || Session::get('_usertype') != 1)
             return redirect('/login');
         if($id->all()->count() == 0)
             return redirect('/admin/addDriver/view');
@@ -174,15 +186,23 @@ class HomeController extends Controller
 
     public function EdidDrivewrSub(User $id,Request $request)
     {
+//        return $request;
         //---------------------= CHECK ADMIN SESSION
         if(Session::get('_username') == null && Session::get('_usertype') != 1)     //CHECK LOGIN   SESSION
             return redirect('/login');
         if(!$request->exists('username'))
-            return redirect('/admin/addDriver/view/edit/'.$id->id);                 //CHECK REQUEST EXISTING
+            return redirect('/admin/Drivers/view/edit/'.$id->id);                 //CHECK REQUEST EXISTING
 
                                                             //   `USERS` TABLE UPDATE
         $id->name   = $request->name  ;                     //    NAME
         $id->family = $request->family;                     //    FAMILY
+
+        if(User::all()->where('email', $request->email)->count() > 0)
+        {
+            Session::put('_msg','Duplicated Email!');
+            Session::put('_msgT',2);
+            return back();
+        }
         $id->email  = $request->email ;                     //    EMAIL
                                                             //
         if(strlen($request->password)>6)                    //
@@ -201,6 +221,9 @@ class HomeController extends Controller
                                                                         //
         $driversD->save();                                              //   SAVE CHANGES IN `DRIVERS` TABLE
 
+        Session::put('_msg','Driver Updated Successfully');
+        Session::put('_msgT',1);
+
         return back();
     }
 
@@ -213,8 +236,13 @@ class HomeController extends Controller
         $s = Carbon::parse($request->startdate .' '. $request->starttime);
         $d = Carbon::parse($request->enddate .' '. $request->endtime);
         $i = $s->diffInHours($d,false);
-        if($i <= 0)
+//        return  $i;
+        if($i < 0)
+        {
+            Session::flash('_msg', 'Incorrect input date!');
+            Session::flash('_msgT', 2);
             return back();
+        }
         Session::put('_SearchStartDate', $s);
         Session::put('_SearchEndDate', $d);
         //return Session::get('_SearchStartDate') ."<br/><br/>". Session::get('_SearchEndDate');
@@ -265,19 +293,25 @@ class HomeController extends Controller
                 ->where('endservice','<',Session::get('_SearchEndDate'))
                 ->join('drivers', 'drivers.id', '=', 'drives.driverid')
                 ->join('users', 'users.id', '=', 'drivers.userid')
-                ->select('users.name', 'users.family','users.email','users.username'
+                ->select(
+                    'users.name', 'users.family','users.email','users.username'
                     ,'users.phonenumber', 'drives.score','drives.taximeter'
-                    ,'drives.startservice','drives.endservice', 'drives.payed','drives.id', 'users.id as uid')
+                    , 'users.id as uid'
+                    ,DB::raw('count(users.id) as user_count'))
+                ->groupBy('uid')
                 ->get();
         else
             $drivers = DB::table('drives')
                 ->join('drivers', 'drivers.id', '=', 'drives.driverid')
                 ->join('users', 'users.id', '=', 'drivers.userid')
-                ->select('users.name', 'users.family','users.email','users.username'
+                ->select(
+                    'users.name', 'users.family','users.email','users.username'
                     ,'users.phonenumber', 'drives.score','drives.taximeter'
-                    ,'drives.startservice','drives.endservice', 'drives.payed','drives.id','users.id as uid')
+                    ,'users.id as uid'
+                    ,DB::raw('count(users.id) as user_count'))
+                ->groupBy('uid')
                 ->get();
-
+//        return $drivers;
         //$drivers  = User::all()->where('type',2);
         //$driversD = Driver::all();
         //return  Session::get('_SearchStartDate') ."<br/><br/>". Session::get('_SearchStartDate');
@@ -299,6 +333,8 @@ class HomeController extends Controller
         $driver = Driver::all()->where('userid',$user->id)->first();
         $driver->delete();
         $user->delete();
+        Session::put('_msg','Driver Deleted Successfully');
+        Session::put('_msgT',1);
         return back();
     }
 
@@ -372,6 +408,10 @@ class HomeController extends Controller
         if(!$id->payed)
             $id->payed = true;
         $id->save();
+
+        Session::put('_msg','Payed Successfully');
+        Session::put('_msgT',1);
+
         return back();
     }
 
@@ -385,34 +425,64 @@ class HomeController extends Controller
 
     public function profilesub(Request $request)
     {
+
         if(!Session::has('_username') || !Session::has('_usertype'))
             return redirect('/login');
 
         $userD = User::all()->where('username',Session::get('_username'))->first();
 //        return $request;
 
+
         if($request->oldpassword == "")
         {
             $userD->name = $request->name;
             $userD->family = $request->family;
+            if(User::all()->where('email',$request->email)->count() > 0)
+            {
+                Session::put('_msg','Email Duplicated.');
+                Session::put('_msgT',2);
+                return back();
+            }
             $userD->email = $request->email;
             $userD->phonenumber = $request->phonenumber;
         }else
         {
-            if($request->confnewpassword == $request->newpassword)
-            {
-                $userD->name = $request->name;
-                $userD->family = $request->family;
-                $userD->email = $request->email;
-                $userD->phonenumber = $request->phonenumber;
-                $userD->password = Hash::make($request->newpassword);
+            if (Auth::attempt(array('username' => $request->username, 'password' => $request->oldpassword))) {
+                if ($request->confnewpassword == $request->newpassword) {
+                    $userD->name = $request->name;
+                    $userD->family = $request->family;
+                    $userD->email = $request->email;
+                    $userD->phonenumber = $request->phonenumber;
+                    $userD->password = Hash::make($request->newpassword);
+                } else {
+                    Session::put('_msg', 'New Password and Confirm Not Matched!');
+                    Session::put('_msgT', 2);
+
+                    return back();
+                }
+            }else {
+                Session::put('_msg', 'Input Password Incorrect!');
+                Session::put('_msgT', 2);
+
+                return back();
             }
 
         }
 
         $userD->save();
+
+        Session::put('_msg','Update Successfully');
+        Session::put('_msgT',1);
+
         return back();
 
+    }
+
+    public function logout()
+    {
+        Session::put('_username',null);
+        Session::put('_usertype',null);
+        return redirect('/login');
     }
 
 }

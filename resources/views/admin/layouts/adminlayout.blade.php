@@ -47,7 +47,7 @@
 
                     <div class="user-image">
                         <!-- TODO: User Setting Page Link -->
-                        <a href="extra-profile.html">
+                        <a href="/admin/profile">
                             <!-- TODO: UserProfile Image -->
                             <img src="{{ url('assets') }}/images/user-2.png" class="img-responsive img-circle" />
                         </a>
@@ -57,7 +57,7 @@
 
                         <h3>
                             <!-- TODO: User Setting Page Link -->
-                            <a href="extra-profile.html">@yield('Username')</a>
+                            <a href="/admin/profile">@yield('Username')</a>
 
                             <!-- Available statuses: is-online, is-idle, is-busy and is-offline -->
                             <span class="user-status is-online"></span>
@@ -67,7 +67,7 @@
 
                         <div class="user-links">
                             <!-- TODO: User Setting Page Link -->
-                            <a href="extra-profile.html" class="btn btn-primary">Edit Profile</a>
+                            <a href="/admin/profile" class="btn btn-primary">Edit Profile</a>
                         </div>
 
                     </div>
@@ -210,7 +210,15 @@
                     </a>
                 </li>
             </ul>
+            <ul class="user-info-menu right-links list-inline list-unstyled">
 
+                <li class="last">
+                    <a href="/logout">
+                        <i class="fa-lock"></i>
+                        Logout
+                    </a>
+                </li>
+            </ul>
 
         </nav>
 

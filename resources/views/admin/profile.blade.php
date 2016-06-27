@@ -49,6 +49,7 @@
                             <strong class="form-control" disabled="disabled">
                                 {{ $userD->username }}
                             </strong>
+                            <input type="hidden" name="username" value="{{ $userD->username }}">
                         </div>
                     </div>
                 </div>
@@ -180,4 +181,51 @@
 
     <!-- JavaScripts initializations and stuff -->
     <script src="{{ url('assets') }}/js/xenon-custom.js"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function($)
+        {
+            var msgT =  '{{ \Session::get('_msgT') }}';
+            var msg =  '{{ \Session::get('_msg') }}';
+            var title = '';
+            @if(\Session::get('_msgT') == 1)
+                    title = 'Successfully';
+            var opts = {
+                "closeButton": true,
+                "debug": false,
+                "positionClass": "toast-bottom-right",
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+            toastr.success("{{ \Session::get('_msg') }}.", title, opts);
+            @elseif(\Session::get('_msgT') == 2)
+                    title = 'Error';
+            var opts = {
+                "closeButton": true,
+                "debug": false,
+                "positionClass": "toast-top-full-width",
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+            toastr.error("{{ \Session::get('_msg') }}.", title, opts);
+            @endif
+
+            {{ \Session::put('_msg','') }}
+            {{ \Session::put('_msgT',0) }}
+        });
+    </script>
 @stop

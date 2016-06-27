@@ -26,7 +26,7 @@
     <input type="hidden" value="{{  $i = 0 }}">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">Removing search and results count filter</h3>
+            <h3 class="panel-title">Reports</h3>
 
             <div class="panel-options">
                 <a href="#" data-toggle="panel">
@@ -87,8 +87,8 @@
                             style="width: 100px;">Phone Number
                         </th>
                         <th class="sorting" tabindex="0" aria-controls="example-2" rowspan="1" colspan="1"
-                            aria-label="Email: activate to sort column ascending"
-                            style="width: 130px;">Email
+                                 aria-label="Email: activate to sort column ascending"
+                                 style="width: 130px;">Email
                         </th>
                         <th class="sorting" tabindex="0" aria-controls="example-2" rowspan="1" colspan="1"
                             aria-label="Actions: activate to sort column ascending" style="width: 90px;">Actions
@@ -100,7 +100,7 @@
 
                     @foreach($drivers as $driver)
 
-                        @if($driver->id % 2 == 0)
+                        @if($i % 2 == 0)
                             <tr role="row" class="odd">
                         @else
                             <tr role="row" class="even">
@@ -108,13 +108,13 @@
                                 <td class="">
                                     {{ $i++ }}
                                 </td>
-                                <td>{{ $driver->name . " " . $driver->family }}</td>
+                                <td>{{ $driver->name . " " . $driver->family }} <span class="badge badge-secondary pull-right">{{ $driver->user_count }}</span></td>
                                 <td class="sorting_1">{{ $driver->username }}</td>
                                 <td>{{ $driver->phonenumber }}</td>
                                 <td>{{ $driver->email }}</td>
                                 <!-- TODO: Create Button Links -->
                                 <td>
-                                    <a href="/admin/Drivers/view/edit/{{ $driver->id }}" class="btn btn-secondary btn-sm btn-icon icon-left">
+                                    <a href="/admin/Drivers/view/edit/{{ $driver->uid }}" class="btn btn-secondary btn-sm btn-icon icon-left">
                                         Edit
                                     </a>
 
@@ -225,12 +225,56 @@
     <script src="{{ url('assets') }}/js/typeahead.bundle.js"></script>
     <script src="{{ url('assets') }}/js/handlebars.min.js"></script>
     <script src="{{ url('assets') }}/js/multiselect/js/jquery.multi-select.js"></script>
+    <script src="{{ url('assets') }}/js/toastr/toastr.min.js"></script>
 
 
     <!-- JavaScripts initializations and stuff -->
     <script src="{{ url('assets') }}/js/xenon-custom.js"></script>
     <script>
         $(document).ready(function(){
+
+            var msgT =  '{{ \Session::get('_msgT') }}';
+            var msg =  '{{ \Session::get('_msg') }}';
+            var title = '';
+            @if(\Session::get('_msgT') == 1)
+                    title = 'Successfully';
+            var opts = {
+                "closeButton": true,
+                "debug": false,
+                "positionClass": "toast-bottom-right",
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+            toastr.success("{{ \Session::get('_msg') }}.", title, opts);
+            @elseif(\Session::get('_msgT') == 2)
+                    title = 'Error';
+            var opts = {
+                "closeButton": true,
+                "debug": false,
+                "positionClass": "toast-top-full-width",
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+            toastr.error("{{ \Session::get('_msg') }}.", title, opts);
+            @endif
+
+            {{ \Session::put('_msg','') }}
+            {{ \Session::put('_msgT',0) }}
+
             $("a.btn-danger").click(function(){
                 var href     = $(this).attr('val1');
                 var username = $(this).attr('val2');
@@ -250,4 +294,5 @@
             });
         });
     </script>
+
 @stop

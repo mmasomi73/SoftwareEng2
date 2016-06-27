@@ -15,7 +15,7 @@
                     <a href="/admin"><i class="fa-home"></i>Dashboard</a>
                 </li>
                 <li>
-                    <a href="/admin/view">View Divers</a>
+                    <a href="/admin/Drivers/view">View Divers</a>
                 </li>
                 <li>
                     <a href="#"><strong>Edit Diver</strong></a>
@@ -28,7 +28,7 @@
     <div class="col-sm-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Register an Driver</h3>
+                <h3 class="panel-title">Update Driver</h3>
                 <div class="panel-options">
                     <a href="#" data-toggle="panel">
                         <span class="collapse-icon">–</span>
@@ -42,12 +42,13 @@
 
             <div class="panel-body ">
                 <!--             begin: Form             -->
-                {!! Form::open(array('url' => 'admin/addDriver/view/edit/'.$id->id.'/submit', 'method' => "post", 'role'=> "form", 'id' =>"addDriver" , 'class'=>"form-horizontal")) !!}
+                {!! Form::open(array('url' => 'admin/Drivers/view/edit/'.$id->id.'/submit', 'method' => "post", 'role'=> "form", 'id' =>"addDriver" , 'class'=>"form-horizontal")) !!}
                 <div class="form-group">
                     {!! Form::label('username', 'Username',array('class'=>"col-sm-2 control-label")) !!}
                     <div class="col-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa-user"></i></span>
+                            <input type="hidden" name="username" value="{{ $id->username }}">
                             {!! Form::text('username', $id->username,array('class'=>"form-control", 'id'=>"username",
                              'autocomplete'=>"off", 'placeholder'=>"Username",'maxlength'=>"20", 'disabled')) !!}
                         </div>
@@ -226,4 +227,51 @@
 
     <!-- JavaScripts initializations and stuff -->
     <script src="{{ url('assets') }}/js/xenon-custom.js"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function($)
+        {
+            var msgT =  '{{ \Session::get('_msgT') }}';
+            var msg =  '{{ \Session::get('_msg') }}';
+            var title = '';
+            @if(\Session::get('_msgT') == 1)
+                    title = 'Successfully';
+            var opts = {
+                "closeButton": true,
+                "debug": false,
+                "positionClass": "toast-bottom-right",
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+            toastr.success("{{ \Session::get('_msg') }}.", title, opts);
+            @elseif(\Session::get('_msgT') == 2)
+                    title = 'Error';
+            var opts = {
+                "closeButton": true,
+                "debug": false,
+                "positionClass": "toast-top-full-width",
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+            toastr.error("{{ \Session::get('_msg') }}.", title, opts);
+            @endif
+
+            {{ \Session::put('_msg','') }}
+            {{ \Session::put('_msgT',0) }}
+        });
+    </script>
 @stop

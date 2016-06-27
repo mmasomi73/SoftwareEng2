@@ -153,7 +153,7 @@
 
             <div class="form-group">
                 {!! Form::label('passwd', 'Password',array('class'=>"control-label", 'for'=>"passwd")) !!}
-                {!! Form::password('passwd', array('class'=>"form-control input-dark", 'id'=>"passwd", 'autocomplete'=>"off", 'minlength'=>"6")) !!}
+                {!! Form::password('passwd', array('class'=>"form-control input-dark", 'id'=>"passwd", 'autocomplete'=>"off", 'minlength'=>"6", 'maxlength'=>"60")) !!}
             </div>
 
             <div class="form-group">
@@ -164,7 +164,7 @@
             </div>
 
             <div class="login-footer">
-                <a href="/register">Create an Account !</a>
+                <a href="#">Create an Account !</a>
 
                 <div class="info-links">
                     <a href="#">Privacy Policy</a>

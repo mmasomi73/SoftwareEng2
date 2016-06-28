@@ -197,13 +197,14 @@ class HomeController extends Controller
         $id->name   = $request->name  ;                     //    NAME
         $id->family = $request->family;                     //    FAMILY
 
-        if(User::all()->where('email', $request->email)->count() > 0)
+        if(User::all()->where('email', $request->email)->count() > 0 && $request->email !=  $id->email)
         {
             Session::put('_msg','Duplicated Email!');
             Session::put('_msgT',2);
             return back();
         }
-        $id->email  = $request->email ;                     //    EMAIL
+        if($request->email !=  $id->email)
+            $id->email  = $request->email ;                 //    EMAIL
                                                             //
         if(strlen($request->password)>6)                    //
             $id->password = Hash::make($request->password); //    PASSWORD
@@ -437,13 +438,14 @@ class HomeController extends Controller
         {
             $userD->name = $request->name;
             $userD->family = $request->family;
-            if(User::all()->where('email',$request->email)->count() > 0)
+            if(User::all()->where('email',$request->email)->count() > 0 && $request->email !=  $userD->email)
             {
                 Session::put('_msg','Email Duplicated.');
                 Session::put('_msgT',2);
                 return back();
             }
-            $userD->email = $request->email;
+            if($request->email !=  $userD->email)
+                $userD->email = $request->email;
             $userD->phonenumber = $request->phonenumber;
         }else
         {

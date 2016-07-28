@@ -50,7 +50,7 @@
 
         </div>
     </div>
-@endsection
+@stop
 
 @section('Username')
     {{ $userD->name . " " .  $userD->family }}

@@ -1,0 +1,28 @@
+.bx-wrapper .bx-prev {
+	left: -40px;
+	/*background: url(images/controls.png) no-repeat 0px -32px;*/
+	background: url(images/icons/left_p.png) no-repeat;
+	
+	
+}
+
+.bx-wrapper .bx-next {
+	right: -30px;
+	/*background: url(images/controls.png) no-repeat -43px -32px;*/
+	background: url(images/icons/right_p.png) no-repeat;
+	
+}
+
+.bx-wrapper .bx-prev:hover {
+	/*background-position: 0 0;*/
+	background: url(images/icons/left_p.png) no-repeat;
+	display: inline;
+	
+}
+
+.bx-wrapper .bx-next:hover {
+	/*background-position: -43px 0;*/
+	background: url(images/icons/right_p.png) no-repeat;
+	display: inline;
+	
+}
